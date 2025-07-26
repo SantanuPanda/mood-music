@@ -25,7 +25,7 @@ router.post("/song", upload.single("audio"), async (req, res) => {
   });
 });
 
-router.get("/", async (req, res) => {
+router.get("/song", async (req, res) => {
   const { mood } = req.query;
 const songs = await songmodel.find({ mood: mood });
 
