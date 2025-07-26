@@ -47,7 +47,7 @@ function App() {
         // Fetch song from backend
         try {
           setLoadingSong(true);
-          const res = await axios.get(`http://localhost:3000/song?mood=${mood[0]}`);
+          const res = await axios.get(`https://mood-music-backend-dp09.onrender.com/song?mood=${mood[0]}`);
           setLoadingSong(false);
           if (res.data.songs && res.data.songs.length > 0) {
             setSongData(res.data.songs[0]);
