@@ -66,7 +66,7 @@ function App() {
   }, [modelsLoaded]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white flex flex-col">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm shadow-sm py-4 px-4 sm:px-6 fixed top-0 w-full z-10">
         <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-center text-purple-800">
@@ -75,7 +75,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 sm:px-6 pt-24 pb-8">
+      <main className="container mx-auto px-4 sm:px-6 pt-24 pb-8 flex-grow">
         <div className="max-w-6xl mx-auto">
           {/* Webcam + Info Section */}
           <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -90,25 +90,25 @@ function App() {
             </div>
 
             {/* Info Card */}
-              <div className="space-y-6">
-                <div>
-                  <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
-                    Live Mood Detection
-                  </h1>
-                  <p className="text-gray-600">
-                    Your facial expressions are analyzed in real-time<br></br>
-                    to create a personalized music experience.
-                  </p>
-                </div>
-                <button
-                  onClick={captureMood}
-                  className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-8 rounded-xl font-medium 
-                    hover:from-indigo-700 hover:to-purple-700 transform hover:scale-[1.02] transition-all duration-300 
-                    focus:ring-4 focus:ring-purple-200 focus:outline-none shadow-md"
-                >
-                  Detect My Mood
-                </button>
+            <div className="space-y-6">
+              <div>
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
+                  Live Mood Detection
+                </h1>
+                <p className="text-gray-600">
+                  Your facial expressions are analyzed in real-time<br></br>
+                  to create a personalized music experience.
+                </p>
               </div>
+              <button
+                onClick={captureMood}
+                className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-8 rounded-xl font-medium 
+                  hover:from-indigo-700 hover:to-purple-700 transform hover:scale-[1.02] transition-all duration-300 
+                  focus:ring-4 focus:ring-purple-200 focus:outline-none shadow-md"
+              >
+                Detect My Mood
+              </button>
+            </div>
           </div>
 
           {/* Song Recommendation */}
@@ -122,17 +122,20 @@ function App() {
 
               {loadingSong ? (
                 <div className="flex items-center justify-center py-8">
-                  <div className="animate-pulse text-gray-600">Loading your perfect track...</div>
+                  <div className="animate-pulse text-gray-600">
+                    Loading your perfect track...
+                  </div>
                 </div>
               ) : songData ? (
                 <div className="space-y-4">
-                    <h2 className="text-lg sm:text-xl font-semibold text-gray-800 break-words">
-                      {songData.title}
-                    </h2>
-                    <p className="text-gray-600 break-words">{songData.artist}</p>
+                  <h2 className="text-lg sm:text-xl font-semibold text-gray-800 break-words">
+                    {songData.title}
+                  </h2>
+                  <p className="text-gray-600 break-words">{songData.artist}</p>
 
-                  <audio 
-                    controls autoPlay
+                  <audio
+                    controls
+                    autoPlay
                     className="w-full"
                     controlsList="nodownload"
                   >
@@ -149,10 +152,13 @@ function App() {
           </div>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-white/80 backdrop-blur-sm shadow-inner py-4 text-center text-sm text-gray-600">
+        © {new Date().getFullYear()} Developed by <span className="font-semibold text-indigo-600">Santanu Panda</span>
+      </footer>
     </div>
   );
 }
 
 export default App;
-
-
